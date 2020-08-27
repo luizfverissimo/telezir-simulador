@@ -1,0 +1,114 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-blue);
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-header #header-content {
+  width: 90%;
+  margin: 50px 50px;
+  align-items: center;
+}
+
+.page-header #header-content h1 {
+  color: var(--color-background);
+  text-align: center;
+}
+
+.page-header #header-content p {
+  font: 400 2.6rem Archivo;
+  color: var(--color-yellow);
+}
+
+.information {
+  margin-bottom: 50px;
+}
+
+.information p {
+  font: 400 1.6rem Archivo;
+}
+
+.form fieldset {
+  border: 0;
+  padding: 0 2.4rem;
+}
+
+.form fieldset legend {
+  font: 700 2.4rem Archivo;
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form fieldset select {
+  height: 5.6rem;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--color-blue);
+  outline: none;
+  margin-bottom: 1.6rem;
+  font: 400 1.6rem Archivo;
+  color: var(--color-blue-text);
+  padding: 1.6rem
+}
+
+.form fieldset select:focus {
+  border: 1px solid var(--color-green);
+}
+
+.form fieldset input {
+  height: 5.6rem;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--color-blue);
+  outline: none;
+  margin-bottom: 1.6rem;
+  font: 400 1.6rem Archivo;
+  color: var(--color-blue-text);
+  padding: 1.6rem
+}
+
+.form fieldset input:focus {
+  border: 1px solid var(--color-green);
+}
+
+.button-container { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.6rem;
+  padding-bottom: 2.6rem;
+  border-bottom: 1px solid var(--color-blue);
+  margin-bottom: 2.6rem;
+}
+
+.button-container button {
+  width: 90%;
+  height: 5.6rem;
+  background: var(--color-blue);
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  font: 400 2.4rem Archivo;
+  color: var(--color-background);
+  transition: opacity 0.2s;
+}
+
+.button-container button:hover {
+  opacity: 0.8;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  justify-content: center;
+  
+}
