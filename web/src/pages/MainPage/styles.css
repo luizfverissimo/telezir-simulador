@@ -1,8 +1,14 @@
+#main-page {
+  display: flex;
+  flex-direction: column;
+}
+
 .page-header {
   display: flex;
   flex-direction: column;
   background: var(--color-blue);
   width: 100vw;
+  height: 150px;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +18,7 @@
 
 .page-header #header-content {
   width: 90%;
-  margin: 50px 50px;
+  max-width: 700px;
   align-items: center;
 }
 
@@ -26,12 +32,15 @@
   color: var(--color-yellow);
 }
 
+.container {
+  margin-top: 200px;
+}
+
 .information {
   margin-bottom: 50px;
 }
 
 .information p {
-  margin-top: 450px;
   font: 400 1.6rem Archivo;
 }
 
@@ -116,4 +125,12 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 4.6rem;
   justify-content: center;
+}
+
+@media (min-width: 700px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1.6rem;
+    justify-content: center;
+  }
 }
