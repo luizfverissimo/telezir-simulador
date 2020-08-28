@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import './styles.css';
+import api from '../../services/api';
 import PlanCard from '../../components/PlanCard';
 
+import './styles.css';
+
 function MainPage() {
+  const [fromLocations, setFromLocations] = useState([]);
+  const [toLocations, setToLocations] = useState([]);
+
+  const loadFromLocation = async () => {
+    const { data } = await api.get('/taxes');
+    setFromLocations(data);
+  };
+  useEffect(() => {
+    loadFromLocation();
+  }, []);
+
+  const fromLocationSelectorHandler = async (value) => {
+    const { data } = await api.get(`/taxes/${value}`);
+    setToLocations(data);
+  };
+
   return (
     <div id='main-page'>
       <header className='page-header'>
@@ -23,42 +41,55 @@ function MainPage() {
           <form className='form'>
             <fieldset>
               <legend>1. DDD de Origem</legend>
-              <select defaultValue='1'>
+              <select
+                defaultValue='1'
+                onChange={(e) => fromLocationSelectorHandler(e.target.value)}
+              >
                 <option disabled value='1' hidden>
                   Selecione um DDD
                 </option>
-                <option>11</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
+                {fromLocations.map((location) => {
+                  return (
+                    <option key={location} value={location}>
+                      {location}
+                    </option>
+                  );
+                })}
               </select>
               <legend>2. DDD do Destino</legend>
               <select defaultValue='1'>
                 <option disabled value='1' hidden>
                   Selecione um DDD
                 </option>
-                <option>11</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
+                {toLocations.map((location) => {
+                  return (
+                    <option key={location.id} value={location.to}>
+                      {location.to}
+                    </option>
+                  );
+                })}
               </select>
               <legend>3. Tempo da ligação</legend>
               <input
-                type='text'
+                type='time'
                 placeholder='Digite o tempo de ligação em minutos'
               />
             </fieldset>
             <div className='button-container'>
-              <button>Simular</button>
+              <button onClick={() => console.log(fromLocations)}>
+                Simular
+              </button>
             </div>
           </form>
         </div>
       </main>
       <div className='card-container'>
-        <PlanCard />
-        <PlanCard />
-        <PlanCard />
-        <PlanCard />
+        <div className='grid-container'>
+          <PlanCard planName='FaleMais 30' price='39.90' acquirable={true} />
+          <PlanCard planName='FaleMais 60' price='59.90' acquirable={true} />
+          <PlanCard planName='FaleMais 120' price='89.90' acquirable={true} />
+          <PlanCard planName='Sem plano' price='129.90' acquirable={false} />
+        </div>
       </div>
     </div>
   );

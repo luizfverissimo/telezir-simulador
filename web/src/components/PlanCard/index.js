@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import './styles.css'
+import './styles.css';
 
-function PlanCard() {
+function PlanCard({ planName, price, acquirable }) {
   return (
     <div className='card'>
-      <p>Nome do Plano</p>
-      <strong>R$ 35,99</strong>
-      <button>Adquirir</button>
+      <p>{planName}</p>
+      <strong>R$ {price}</strong>
+      {acquirable && <button>Adquirir</button>}
     </div>
-  )
+  );
 }
 
-export default PlanCard
+export default PlanCard;
